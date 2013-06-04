@@ -27,7 +27,7 @@ $(call inherit-product, device/common/gps/gps_eu_supl.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
 # Use the non-open-source parts, if they're present
-$(call inherit-product, vendor/samsung/u8500-common/common-vendor.mk)
+#$(call inherit-product-if-exists, vendor/samsung/u8500-common/common-vendor.mk)
 
 # Init files
 PRODUCT_COPY_FILES := \
@@ -46,6 +46,11 @@ PRODUCT_COPY_FILES += \
     device/samsung/u8500-common/configs/adm.sqlite-u8500:system/etc/adm.sqlite-u8500 \
     device/samsung/u8500-common/configs/audio_policy.conf:system/vendor/etc/audio_policy.conf \
     device/samsung/u8500-common/configs/asound.conf:system/etc/asound.conf
+
+# BT A2DP
+PRODUCT_PACKAGES += \
+    libasound_module_ctl_bluetooth \
+    libasound_module_pcm_bluetooth
 
 # OMX
 PRODUCT_COPY_FILES += \
